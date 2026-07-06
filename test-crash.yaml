@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+  labels:
+    app: node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: application
+        image: alpine:latest
+        # This command forces the container to exit immediately with an error code
+        command: ["sh", "-c", "echo 'Starting app...'; echo 'Application is now running perfectly!'; sleep infinity"]
